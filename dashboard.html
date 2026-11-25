@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Dashboard</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <div class="dash">
+
+    <div class="top">
+      <h2>Dashboard</h2>
+      <button onclick="logout()">Logout</button>
+    </div>
+
+    <h3>Analysis</h3>
+    <div class="cards">
+      <div class="card"><h1 id="total">0</h1><p>Total Users</p></div>
+      <div class="card"><h1 id="male">0</h1><p>Male</p></div>
+      <div class="card"><h1 id="female">0</h1><p>Female</p></div>
+    </div>
+
+    <h3>All Registered Users</h3>
+    <table>
+      <tr>
+        <th>No</th>
+        <th>Name</th>
+        <th>Email</th>
+        <th>Gender</th>
+        <th>City</th>
+      </tr>
+      <tbody id="tableBody"></tbody>
+    </table>
+
+    <p class="footer">Student Registration Project</p>
+  </div>
+
+  <script>
+    // If not logged in, go to login page
+    if (localStorage.getItem("loggedIn") != "yes") {
+      window.location = "login.html";
+    }
+
+    // Get saved users
+    var users = JSON.parse(localStorage.getItem("users"));
+    if (users == null) {
+      users = [];
+    }
+
+    var male = 0;
+    var female = 0;
+    var rows = "";
+
+    for (var i = 0; i < users.length; i++) {
+
+      if (users[i].gender == "Male") {
+        male = male + 1;
+      }
+      if (users[i].gender == "Female") {
+        female = female + 1;
+      }
+
+      rows = rows + "<tr>" +
+        "<td>" + (i + 1) + "</td>" +
+        "<td>" + users[i].name + "</td>" +
+        "<td>" + users[i].email + "</td>" +
+        "<td><span class='badge " + users[i].gender + "'>" + users[i].gender + "</span></td>" +
+        "<td>" + users[i].city + "</td>" +
+        "</tr>";
+    }
+
+    if (users.length == 0) {
+      rows = "<tr><td colspan='5' class='empty'>No users registered yet</td></tr>";
+    }
+
+    document.getElementById("total").innerText = users.length;
+    document.getElementById("male").innerText = male;
+    document.getElementById("female").innerText = female;
+    document.getElementById("tableBody").innerHTML = rows;
+
+    function logout() {
+      localStorage.removeItem("loggedIn");
+      window.location = "login.html";
+    }
+  </script>
+</body>
+</html>

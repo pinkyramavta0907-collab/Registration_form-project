@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Register</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <div class="box">
+    <h2>Register</h2>
+    <input type="text" id="name" placeholder="Name">
+    <input type="text" id="email" placeholder="Email">
+    <input type="password" id="password" placeholder="Password">
+    <select id="gender">
+      <option>Male</option>
+      <option>Female</option>
+    </select>
+    <input type="text" id="city" placeholder="City">
+    <button onclick="register()">Submit</button>
+    <p><a href="login.html">Already registered? Login</a></p>
+  </div>
+
+  <script>
+    function register() {
+      var name = document.getElementById("name").value;
+      var email = document.getElementById("email").value;
+      var password = document.getElementById("password").value;
+      var gender = document.getElementById("gender").value;
+      var city = document.getElementById("city").value;
+
+      if (name == "" || email == "" || password == "" || city == "") {
+        alert("Please fill all fields");
+        return;
+      }
+
+      var users = JSON.parse(localStorage.getItem("users"));
+      if (users == null) {
+        users = [];
+      }
+
+      users.push({ name: name, email: email, password: password, gender: gender, city: city });
+      localStorage.setItem("users", JSON.stringify(users));
+
+      alert("Registered successfully");
+      window.location = "login.html";
+    }
+  </script>
+</body>
+</html>

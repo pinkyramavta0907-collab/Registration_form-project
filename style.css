@@ -1,0 +1,201 @@
+/* Background for all pages */
+body {
+  font-family: Arial, sans-serif;
+  background: linear-gradient(135deg, #667eea, #764ba2);
+  text-align: center;
+  margin: 0;
+  padding: 20px;
+  min-height: 100vh;
+}
+
+/* White card for register and login */
+.box {
+  background: white;
+  width: 320px;
+  margin: 60px auto;
+  padding: 30px;
+  border-radius: 15px;
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.3);
+}
+
+.box h2 {
+  color: #333;
+  margin-bottom: 20px;
+}
+
+/* Input boxes */
+input, select {
+  width: 90%;
+  padding: 12px;
+  margin: 8px 0;
+  border: 1px solid #ccc;
+  border-radius: 8px;
+  font-size: 14px;
+}
+
+input:focus, select:focus {
+  border-color: #667eea;
+  outline: none;
+}
+
+/* Buttons */
+button {
+  width: 95%;
+  padding: 12px;
+  margin-top: 10px;
+  background: #667eea;
+  color: white;
+  border: none;
+  border-radius: 8px;
+  font-size: 16px;
+  cursor: pointer;
+}
+
+button:hover {
+  background: #4c5fd5;
+}
+
+/* Links */
+a {
+  color: #667eea;
+  text-decoration: none;
+}
+
+a:hover {
+  text-decoration: underline;
+}
+
+/* ---------- Dashboard ---------- */
+.dash {
+  background: white;
+  width: 90%;
+  max-width: 800px;
+  margin: 20px auto;
+  padding: 25px;
+  border-radius: 15px;
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.3);
+}
+
+.dash h2, .dash h3 {
+  color: #333;
+}
+
+/* Logout button should not be full width */
+.dash button {
+  width: auto;
+  padding: 8px 20px;
+  background: #e74c3c;
+}
+
+.dash button:hover {
+  background: #c0392b;
+}
+
+/* Analysis cards */
+.cards {
+  display: flex;
+  justify-content: center;
+  gap: 15px;
+  margin: 20px 0;
+}
+
+.card {
+  background: #f0f3ff;
+  padding: 15px 25px;
+  border-radius: 10px;
+  border-top: 4px solid #667eea;
+}
+
+.card h1 {
+  margin: 0;
+  color: #667eea;
+}
+
+.card p {
+  margin: 5px 0 0;
+  color: #555;
+}
+
+/* Table */
+table {
+  width: 100%;
+  border-collapse: collapse;
+  margin-top: 15px;
+}
+
+th {
+  background: #667eea;
+  color: white;
+  padding: 10px;
+}
+
+td {
+  padding: 10px;
+  border-bottom: 1px solid #ddd;
+}
+
+tr:hover {
+  background: #f0f3ff;
+}
+/* Title and logout button in one line */
+.top {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  border-bottom: 2px solid #eee;
+  margin-bottom: 10px;
+}
+
+/* Cards get a lift when the mouse is over them */
+.card {
+  transition: 0.3s;
+  min-width: 90px;
+}
+
+.card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 6px 15px rgba(0, 0, 0, 0.2);
+}
+
+/* Different top colours for the 3 cards */
+.card:nth-child(2) { border-top-color: #3498db; }
+.card:nth-child(3) { border-top-color: #e91e8c; }
+
+/* Light grey on every second row */
+tr:nth-child(even) {
+  background: #f9f9f9;
+}
+
+/* Gender labels */
+.badge {
+  padding: 4px 12px;
+  border-radius: 20px;
+  font-size: 13px;
+  color: white;
+}
+
+.Male { background: #3498db; }
+.Female { background: #e91e8c; }
+
+/* Message when there are no users */
+.empty {
+  color: #999;
+  padding: 20px;
+}
+
+/* Bottom text */
+.footer {
+  color: #999;
+  font-size: 13px;
+  margin-top: 20px;
+}
+
+/* Page fades in */
+.box, .dash {
+  animation: fadeIn 0.8s;
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(20px); }
+  to { opacity: 1; transform: translateY(0); }
+}

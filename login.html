@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Login</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <div class="box">
+    <h2>Login</h2>
+    <input type="text" id="email" placeholder="Email">
+    <input type="password" id="password" placeholder="Password">
+    <button onclick="login()">Login</button>
+    <p><a href="index.html">New user? Register</a></p>
+  </div>
+
+  <script>
+    function login() {
+      var email = document.getElementById("email").value;
+      var password = document.getElementById("password").value;
+      var users = JSON.parse(localStorage.getItem("users"));
+
+      if (users == null) {
+        alert("No users found. Please register first.");
+        return;
+      }
+
+      for (var i = 0; i < users.length; i++) {
+        if (users[i].email == email && users[i].password == password) {
+          localStorage.setItem("loggedIn", "yes");
+          window.location = "dashboard.html";
+          return;
+        }
+      }
+      alert("Wrong email or password");
+    }
+  </script>
+</body>
+</html>
